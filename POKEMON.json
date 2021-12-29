@@ -1,0 +1,2000 @@
+{
+	"info": {
+		"_postman_id": "383e4806-0ad1-4179-bec5-95ef2ad4c3bb",
+		"name": "POKEMON",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Pokemon",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.clear;"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"ListTotlalName = [];\r",
+							"var response = JSON.parse(responseBody);\r",
+							"pm.test(\"get infos\", function () {\r",
+							"\r",
+							"    for (var i=1; i<= (pm.environment.get(\"limit\")); i++){\r",
+							"          pm.collectionVariables.set (\"url\"+i,response.results[i-1].url );\r",
+							"         pm.collectionVariables.set (\"pok\"+i,response.results[i-1].name );\r",
+							"        ListTotlalName.push(pm.collectionVariables.get(\"pok\"+i));\r",
+							"\r",
+							"    }\r",
+							" pm.collectionVariables.set(\"ListTotlalName\", ListTotlalName);\r",
+							"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon?limit={{limit}}",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "{{limit}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"    ListNormalType = []; //array that would store the list of values\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the the name of pokemon to the array\r",
+							"ListNormalType.push(pm.collectionVariables.get(\"pok1\"));\r",
+							"}\r",
+							"//storing the array as a collection variable for further use\r",
+							" pm.collectionVariables.set(\"ListNormalType\", ListNormalType);\r",
+							" console.log(\"ListNormalType:\"); console.log(ListNormalType);\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url1}}",
+					"host": [
+						"{{url1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"   \r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok2\"))\r",
+							"\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							" \r",
+							"\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url2}}",
+					"host": [
+						"{{url2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"   \r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok3\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							" \r",
+							"\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url3}}",
+					"host": [
+						"{{url3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 4",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"   \r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok4\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							" \r",
+							"\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url4}}",
+					"host": [
+						"{{url4}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 5",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"   \r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok5\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							" \r",
+							"\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url5}}",
+					"host": [
+						"{{url5}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 6",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"   \r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok6\"));\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							" \r",
+							"\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url6}}",
+					"host": [
+						"{{url6}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 7",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok7\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url7}}",
+					"host": [
+						"{{url7}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 8",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok8\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url8}}",
+					"host": [
+						"{{url8}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 9",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok9\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url9}}",
+					"host": [
+						"{{url9}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 10",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok10\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url10}}",
+					"host": [
+						"{{url10}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 11",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok11\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url11}}",
+					"host": [
+						"{{url11}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 12",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok12\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url12}}",
+					"host": [
+						"{{url12}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 13",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok13\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url13}}",
+					"host": [
+						"{{url13}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 14",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok14\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url14}}",
+					"host": [
+						"{{url14}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 15",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok15\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url15}}",
+					"host": [
+						"{{url15}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 16",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok16\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url16}}",
+					"host": [
+						"{{url16}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 17",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok17\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url17}}",
+					"host": [
+						"{{url17}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 18",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok18\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url18}}",
+					"host": [
+						"{{url18}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 19",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok19\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" \r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url19}}",
+					"host": [
+						"{{url19}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 20",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok20\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url20}}",
+					"host": [
+						"{{url20}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 21",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok21\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url21}}",
+					"host": [
+						"{{url21}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 22",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok22\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"  console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"\r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url22}}",
+					"host": [
+						"{{url22}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 23",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {4\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok23\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url23}}",
+					"host": [
+						"{{url23}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 24",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok24\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url24}}",
+					"host": [
+						"{{url24}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 25",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok25\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url25}}",
+					"host": [
+						"{{url25}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 26",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok26\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url26}}",
+					"host": [
+						"{{url26}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 27",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok27\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url27}}",
+					"host": [
+						"{{url27}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 28",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok28\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url28}}",
+					"host": [
+						"{{url28}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 29",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok29\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" console.log(\"ListNormalType:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"}\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url29}}",
+					"host": [
+						"{{url29}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon 30",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var response = JSON.parse(responseBody); //parsing the JSON response\r",
+							"console.log(response); //printing the response in console\r",
+							"pm.test(\"verfiy normal type\", function () {\r",
+							"if (response.types[0].type.name ===\"normal\") {\r",
+							"//pushing the name of pokemon to the array\r",
+							"pm.collectionVariables.get(\"ListNormalType\").push(pm.collectionVariables.get(\"pok30\"))\r",
+							"//storing the new array \r",
+							" pm.collectionVariables.set(\"ListNormalType\", pm.collectionVariables.get(\"ListNormalType\"));\r",
+							" \r",
+							"}\r",
+							"  console.log(\"List Totlal Pokemon Name:\"); console.log(pm.collectionVariables.get(\"ListTotlalName\"));\r",
+							" console.log(\"Final List Normal Type:\"); console.log(pm.collectionVariables.get(\"ListNormalType\"));\r",
+							"\r",
+							"\r",
+							"});\r",
+							"        \r",
+							" \r",
+							"\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url30}}",
+					"host": [
+						"{{url30}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url1",
+			"value": ""
+		},
+		{
+			"key": "pok1",
+			"value": ""
+		},
+		{
+			"key": "url2",
+			"value": ""
+		},
+		{
+			"key": "pok2",
+			"value": ""
+		},
+		{
+			"key": "url3",
+			"value": ""
+		},
+		{
+			"key": "pok3",
+			"value": ""
+		},
+		{
+			"key": "url4",
+			"value": ""
+		},
+		{
+			"key": "pok4",
+			"value": ""
+		},
+		{
+			"key": "url5",
+			"value": ""
+		},
+		{
+			"key": "pok5",
+			"value": ""
+		},
+		{
+			"key": "url6",
+			"value": ""
+		},
+		{
+			"key": "pok6",
+			"value": ""
+		},
+		{
+			"key": "url7",
+			"value": ""
+		},
+		{
+			"key": "pok7",
+			"value": ""
+		},
+		{
+			"key": "url8",
+			"value": ""
+		},
+		{
+			"key": "pok8",
+			"value": ""
+		},
+		{
+			"key": "url9",
+			"value": ""
+		},
+		{
+			"key": "pok9",
+			"value": ""
+		},
+		{
+			"key": "url10",
+			"value": ""
+		},
+		{
+			"key": "pok10",
+			"value": ""
+		},
+		{
+			"key": "url11",
+			"value": ""
+		},
+		{
+			"key": "pok11",
+			"value": ""
+		},
+		{
+			"key": "url12",
+			"value": ""
+		},
+		{
+			"key": "pok12",
+			"value": ""
+		},
+		{
+			"key": "url13",
+			"value": ""
+		},
+		{
+			"key": "pok13",
+			"value": ""
+		},
+		{
+			"key": "url14",
+			"value": ""
+		},
+		{
+			"key": "pok14",
+			"value": ""
+		},
+		{
+			"key": "url15",
+			"value": ""
+		},
+		{
+			"key": "pok15",
+			"value": ""
+		},
+		{
+			"key": "url16",
+			"value": ""
+		},
+		{
+			"key": "pok16",
+			"value": ""
+		},
+		{
+			"key": "url17",
+			"value": ""
+		},
+		{
+			"key": "pok17",
+			"value": ""
+		},
+		{
+			"key": "url18",
+			"value": ""
+		},
+		{
+			"key": "pok18",
+			"value": ""
+		},
+		{
+			"key": "url19",
+			"value": ""
+		},
+		{
+			"key": "pok19",
+			"value": ""
+		},
+		{
+			"key": "url20",
+			"value": ""
+		},
+		{
+			"key": "pok20",
+			"value": ""
+		},
+		{
+			"key": "url21",
+			"value": ""
+		},
+		{
+			"key": "pok21",
+			"value": ""
+		},
+		{
+			"key": "url22",
+			"value": ""
+		},
+		{
+			"key": "pok22",
+			"value": ""
+		},
+		{
+			"key": "url23",
+			"value": ""
+		},
+		{
+			"key": "pok23",
+			"value": ""
+		},
+		{
+			"key": "url24",
+			"value": ""
+		},
+		{
+			"key": "pok24",
+			"value": ""
+		},
+		{
+			"key": "url25",
+			"value": ""
+		},
+		{
+			"key": "pok25",
+			"value": ""
+		},
+		{
+			"key": "url26",
+			"value": ""
+		},
+		{
+			"key": "pok26",
+			"value": ""
+		},
+		{
+			"key": "url27",
+			"value": ""
+		},
+		{
+			"key": "pok27",
+			"value": ""
+		},
+		{
+			"key": "url28",
+			"value": ""
+		},
+		{
+			"key": "pok28",
+			"value": ""
+		},
+		{
+			"key": "url29",
+			"value": ""
+		},
+		{
+			"key": "pok29",
+			"value": ""
+		},
+		{
+			"key": "url30",
+			"value": ""
+		},
+		{
+			"key": "pok30",
+			"value": ""
+		},
+		{
+			"key": "ListNormalType",
+			"value": ""
+		},
+		{
+			"key": "ListName",
+			"value": ""
+		},
+		{
+			"key": "ListTotlalName",
+			"value": ""
+		}
+	]
+}

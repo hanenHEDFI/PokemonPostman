@@ -1,0 +1,14 @@
+{
+	"id": "3d1e3a9e-37b8-4b6b-b358-f986b9c36e97",
+	"name": "Pok",
+	"values": [
+		{
+			"key": "limit",
+			"value": "30",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-12-27T05:18:45.705Z",
+	"_postman_exported_using": "Postman/9.6.2"
+}
